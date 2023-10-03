@@ -1,12 +1,12 @@
-import blogmodel from "../models/blogmodel.js";
+import login_model from "../models/login.model.js";
 
 //metodos crud
 
 export const getAll = async (req, res) => {
     try {
 
-        const libros = await blogmodel.findAll();
-        res.json(libros);
+        const login = await login_model.findAll();
+        res.json(login);
 
     } catch (error) {
         res.json({ message: error.message })
@@ -14,15 +14,15 @@ export const getAll = async (req, res) => {
 }
 
 
-export const getBook = async (req, res) => {
+export const getLogin = async (req, res) => {
     try {
 
-        const libros = await blogmodel.findAll(
+        const login = await login_model.findAll(
             {
-                where: { id: req.params.id }
+                where: { cliente_id: req.params.id }
             }
         );
-        res.json(libros[0]);
+        res.json(login[0]);
 
     } catch (error) {
         res.json({ message: error.message })
@@ -30,9 +30,9 @@ export const getBook = async (req, res) => {
 }
 
 
-export const createBook = async (req, res) => {
+export const createLogin = async (req, res) => {
     try {
-        await blogmodel.create(req.body);
+        await login_model.create(req.body);
         res.json({
             "message": "Registro creado"
         });
@@ -42,10 +42,10 @@ export const createBook = async (req, res) => {
     }
 }
 
-export const updateBook = async (req, res) => {
+export const updateLogin = async (req, res) => {
     try {
-        await blogmodel.update(req.body, {
-            where: { id: req.params.id }
+        await login_model.update(req.body, {
+            where: { cliente_id: req.params.id }
         });
         res.json({
             "message": "Registro actualizado"
@@ -56,10 +56,10 @@ export const updateBook = async (req, res) => {
     }
 }
 
-export const deleteBook = async (req, res) => {
+export const deleteLogin = async (req, res) => {
     try {
-        await blogmodel.destroy({
-            where: { id: req.params.id }
+        await login_model.destroy({
+            where: { cliente_id: req.params.id }
         });
         res.json({
             "message": "Registro eliminado"
