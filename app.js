@@ -1,12 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import db from "./src/database/db.js";
-import bookrouter from "./src/routes/login.routes.js";
+import mainrutes from './src/routes/main.routes.js';
+
 
 const app = express();
 app.use(cors());
 app.use(express.json())
-app.use('/login', bookrouter);
+app.use(mainrutes);
 
 try {
     await db.authenticate();
