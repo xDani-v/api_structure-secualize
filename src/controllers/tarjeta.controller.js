@@ -1,12 +1,12 @@
-import cuenta_model from "../models/cuenta.model.js";
+import tarjeta_model from "../models/tarjeta.model.js";
 
 //metodos crud
 
 export const getAll = async (req, res) => {
     try {
 
-        const cuenta = await cuenta_model.findAll();
-        res.json(cuenta);
+        const tarjeta = await tarjeta_model.findAll();
+        res.json(tarjeta);
 
     } catch (error) {
         res.json({ message: error.message })
@@ -14,15 +14,15 @@ export const getAll = async (req, res) => {
 }
 
 
-export const getcuenta = async (req, res) => {
+export const gettarjeta = async (req, res) => {
     try {
 
-        const cuenta = await cuenta_model.findAll(
+        const tarjeta = await tarjeta_model.findAll(
             {
                 where: { id: req.params.id }
             }
         );
-        res.json(cuenta[0]);
+        res.json(tarjeta[0]);
 
     } catch (error) {
         res.json({ message: error.message })
@@ -30,9 +30,9 @@ export const getcuenta = async (req, res) => {
 }
 
 
-export const createcuenta = async (req, res) => {
+export const createtarjeta = async (req, res) => {
     try {
-        await cuenta_model.create(req.body);
+        await tarjeta_model.create(req.body);
         res.json({
             "message": "Registro creado"
         });
@@ -42,9 +42,9 @@ export const createcuenta = async (req, res) => {
     }
 }
 
-export const updatecuenta = async (req, res) => {
+export const updatetarjeta = async (req, res) => {
     try {
-        await cuenta_model.update(req.body, {
+        await tarjeta_model.update(req.body, {
             where: { id: req.params.id }
         });
         res.json({
@@ -56,9 +56,9 @@ export const updatecuenta = async (req, res) => {
     }
 }
 
-export const deletecuenta = async (req, res) => {
+export const deletetarjeta = async (req, res) => {
     try {
-        await cuenta_model.destroy({
+        await tarjeta_model.destroy({
             where: { id: req.params.id }
         });
         res.json({
