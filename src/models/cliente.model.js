@@ -14,6 +14,7 @@ const Cliente = db.define('cliente', {
     correo_electronico: DataTypes.STRING,
     profesion: DataTypes.STRING,
     estado: DataTypes.STRING,
+    password: DataTypes.STRING,
 }, {
     tableName: 'cliente',
     timestamps: false
